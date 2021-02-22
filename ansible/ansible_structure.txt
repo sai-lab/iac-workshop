@@ -1,0 +1,40 @@
+例 : 〇〇(ファイル)，〇〇/(ディレクトリ)
+ansible/ (ansible用ディレクトリ)
+       |- ansible.cfg (ansibleの設定ファイル)
+       |- hosts (ansibleの対象を記述する)
+        - playbook/ (ansibleの実行内容を記述しているファイルを置くディレクトリ)
+                  |- nginx_vars/ (nginxのymlで使用する変数を置くディレクトリ)
+                  |            |- install.yml (install時に使用する変数を置くファイル)
+                  |             - nginx.yml (何か変数使う場合は置く，無い場合は存在しません)
+                  |- wordpress_vars/(wordpressのymlで使用する変数を置くディレクトリ)
+                  |                |- install.yml (install時に使用する変数を置くファイル)
+                  |                 - wordpress.yml (何か変数使う場合は置く，無い場合は存在しません)
+                  |- php_vars/ (phpのymlで使用する変数を置くディレクトリ)
+                  |          |- install.yml (install時に使用する変数を置くファイル)
+                  |           - php.yml (何か変数使う場合は置く，無い場合は存在しません)
+                  |- apache_vars/ (apacheのymlで使用する変数を置くディレクトリ)
+                  |            |- install.yml (install時に使用する変数を置くファイル)
+                  |             - apache.yml (何か変数使う場合は置く，無い場合は存在しません)
+                  |- install.yml (各installするタスクの指定をします)
+                  |- nginx.yml (nginxで何かするタスクを指定します)
+                  |- wordpress.yml (wordpressで何かするタスクを指定します)
+                  |- php.yml (phpで何かするタスクを指定します)
+                  |- apache.yml (apacheで何かするタスクを指定します)
+                   - roles/ (実際に行うことを記述するファイルを置くディレクトリ)
+                          |- nginx_install/
+                          |               |- templates/ ()
+                          |               |           |- nginx.conf ()
+                          |               |            - 〇.conf ()
+                          |               |- files/ ()
+                          |               |       |- index.html ()
+                          |               |        - 〇.png等 ()
+                          |                - task/ ()
+                          |                       - main.yml ()
+                          |- nginx/
+                          |- wordpress_install/
+                          |- wordpress/
+                          |- php_install/
+                          |- php/
+                          |- apache_install/
+                          |- apache/
+                           - mysql_install/

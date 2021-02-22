@@ -1,0 +1,8 @@
+[defaults]
+remote_user = ansible
+#private_key_file = /path/to/file
+host_key_checking = False
+#forks = 5
+#nocolor = 1
+#gather_timeout = 30
+#timeout = 10
