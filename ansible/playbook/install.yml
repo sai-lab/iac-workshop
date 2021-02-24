@@ -1,0 +1,12 @@
+---
+- hosts: install
+  become: yes
+  gather_facts: no
+  vars_files: 
+    - "vars/install.yml"
+  roles: 
+    - timezone
+    - nginx_install
+    - php_install
+    - wordpress_install
+    - mariadb_install

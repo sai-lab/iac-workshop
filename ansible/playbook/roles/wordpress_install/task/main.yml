@@ -1,0 +1,33 @@
+---
+# aptの場合
+- name: Install wordpress
+  apt: 
+    name: wordpress
+    state: latest
+    update_cache: yes
+
+# tar.xzを解凍する場合
+#- name: Download wordPress
+#  get_url:
+#    url: {{ wordpress_url }}
+#    dest: /tmp
+#
+#- name: Install tar
+#  apt:
+#    name: tar
+#    state: latest
+#    update_cache: yes
+#
+#- name: Unzip wordPress
+#  unarchive:
+#    src: /tmp/{{ wordpress_name }}.tar.gz
+#    dest: /var/www
+#    remote_src: yes
+#
+#- name: chown -R root:root 
+#  file:
+#    path: /var/www/wordpress
+#    state: directory
+#    owner: root
+#    group: root
+#    recurse: yes

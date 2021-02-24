@@ -1,0 +1,5 @@
+---
+nginx_place: "/usr/local/etc/nginx"
+wordpress_version: 5.4
+wordpress_name: "wordpress-{{ wordpress_version }}-ja"
+wordpress_url: "https://ja.wordpress.org/{{ wordpress_name }}.tar.gz"
