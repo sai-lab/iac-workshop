@@ -106,3 +106,8 @@ name: Taro
 - name: Ehime
 - name: Kouchi
 ```
+
+## 参考文献
+
+[*Ansible*](https://docs.ansible.com/index.html)
+[*YAML*](https://magazine.rubyist.net/articles/0009/0009-YAML.html)

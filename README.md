@@ -82,7 +82,7 @@ ansible [pattern] -m [module] -a "[module options]"
 
 #### 書き方
 
-書き方には基本的にブロックスタイルとフロースタイルがあり，ブロックスタイルはインデントで，フロースタイルは"{}"，"[]"を用いて構造を表す．(カンマの後には空白を入れること)
+書き方には基本的にブロックスタイルとフロースタイルがあり，ブロックスタイルはインデントで，フロースタイルは"{}"，"[]"を用いて構造を表す．(カンマ，コロンの後には空白を入れること)
 
 ##### 配列
 
@@ -109,8 +109,57 @@ name: Taro
 ハッシュと配列を組み合わせて使うこともできる．
 
 ```yaml
-- name: Kagawa
-- name: Tokushima
-- name: Ehime
-- name: Kouchi
+- name1: Kagawa
+- name2: Tokushima
+- name3: Ehime
+- name4: Kouchi
+
+{name1: Kagawa, name2: Tokushima, name3: Ehime, name4: Kouchi}
 ```
+
+#### コメント
+
+(#)から行末までがコメントになります．
+
+```yaml
+# この行はコメント
+```
+
+#### スカラーとデータ型
+
+配列やハッシュのような，他のデータを要素としてもつデータは「コレクション (Collection)」といいます．それ以外のデータ (数値や文字列など) は「スカラー (Scalar)」といいます．
+yamlでは、以下のデータ型を自動的に判別します。
+
+- 整数
+- 浮動小数点
+- 真偽値 (true, yes, false, no)
+- Null値 (null, ~)
+- 日付 (yyyy-mm-dd)
+- タイムスタンプ (yyyy-mm-dd hh:mm:ss [+-]hh:mm)
+
+```yaml
+decimal1:  123                           # 整数 (10 進数)
+decimal2:  1,234,567,890                 # 整数 (10 進数)
+octal:     0644                          # 整数 (8 進数)
+hexa:      0xFF                          # 整数 (16 進数)
+float1:    0.05                          # 浮動小数点
+bool1:     true                          # 真
+bool2:     yes                           # 真
+bool3:     on                            # 真
+bool4:     false                         # 偽
+bool5:     no                            # 偽
+bool6:     off                           # 偽
+null1:     ~                             # Null 値
+null2:     null                          # Null 値
+date:      2005-01-01                    # 日付
+stamp:     2005-01-01 00:00:00 +09:00    # タイムスタンプ
+str1:      'true'                        # 文字列
+str2:      "2005"                        # 文字列
+symbol:    :foo                          # シンボル (Syck の独自機能)
+```
+
+## 参考文献
+
+[*Vagrant*](https://www.vagrantup.com/)
+[*Ansible*](https://docs.ansible.com/index.html)
+[*YAML*](https://magazine.rubyist.net/articles/0009/0009-YAML.html)
