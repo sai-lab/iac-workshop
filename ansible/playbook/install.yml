@@ -7,6 +7,6 @@
   roles: 
     - timezone
     - nginx_install
+    - mariadb_install
     - php_install
     - wordpress_install
-    - mariadb_install
