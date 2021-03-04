@@ -37,7 +37,7 @@ ansible-playbook -i Hostfile playbookfile --private-key=keyfiles -u ansible
 成功例
 
 ```bash
-$ ansible 127.0.0.1 -m ping
+$ ansible -i Hostfile -m ping
 127.0.0.1 | SUCCESS => {
     "changed": false,
     "ping": "pong"
@@ -47,7 +47,7 @@ $ ansible 127.0.0.1 -m ping
 失敗例
 
 ```bash
-$ ansible 127.0.0.2 -m ping
+$ ansible -i Hostfile -m ping
 127.0.0.2 | UNREACHABLE! => {
     "changed": false,
     "msg": "Failed to connect to the host via ssh: Warning: Permanently added '127.0.0.2' (ECDSA) to the list of known hosts.\r\nhata@127.0.0.2: Permission denied (publickey).\r\n",
@@ -67,6 +67,33 @@ ansible [pattern] -m [module] -a "[module options]"
 - -i : ホストファイルを指定し，configに記載されているホストファイル以外を使用する場合，ホストファイルの場所を入れる
 - --private-key : 鍵認証を行い，configに記載されている鍵ファイル以外を使用する場合，鍵ファイルの場所入れる
 - -u : 使用するユーザを指定し，configに記載されているユーザ以外を使用する場合，使用ユーザを入れる．
+
+## 構成
+
+構成を以下に示す．
+
+```txt
+例 : 〇〇(ファイル)，〇〇/(ディレクトリ)
+ansible/ (ansible用ディレクトリ)
+       |- ansible.cfg (ansibleの設定ファイル)
+       |- hosts (ansibleの対象を記述する)
+        - playbook/ (ansibleの実行内容を記述しているファイルを置くディレクトリ)
+                  |- vars/ (各種変数用ディレクトリ)
+                  |      |- install.yml (インストール用変数ファイル)
+                  |- install.yml (各installするタスクの指定をします)
+                   - roles/ (実際に行うことを記述するファイルを置くディレクトリ)
+                          |- nginx_install/ (nginxインストール用ディレクトリ)
+                          |               |- files/ (使用するファイルを置くディレクトリ)
+                          |               |       |- index.html (予定)
+                          |               |       |- 〇.png等 (予定)
+                          |               |        - nginx.conf (書き換えたnginxの設定ファイル)
+                          |                - task/ (行う処理を記述するファイルを置くディレクトリ)
+                          |                       - main.yml (処理を記述)
+                          |- wordpress_install/ (同上)
+                          |- php_install/ (同上)
+                          |- mariadb_install/ (同上)
+                           - timezone/ (同上)
+```
 
 ## YAMLについて
 
@@ -152,5 +179,6 @@ symbol:    :foo                          # シンボル (Syck の独自機能)
 
 ## 参考文献
 
-[*Ansible*](https://docs.ansible.com/index.html)
+[*Ansible*](https://www.ansible.com/)  
+[*Ansible Docs*](https://docs.ansible.com/index.html)  
 [*YAML*](https://magazine.rubyist.net/articles/0009/0009-YAML.html)
