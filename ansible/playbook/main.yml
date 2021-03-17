@@ -1,0 +1,7 @@
+---
+- hosts: local
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: Hello World
+      command: echo "Hello World"
