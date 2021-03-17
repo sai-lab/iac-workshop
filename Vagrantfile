@@ -1,12 +1,14 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+user = ENV['USER']
+
 Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "generic/ubuntu2004"
 
-  config.vm.define "vagrant1" do |machine1|
+  config.vm.define "#{user}-iac" do |machine1|
     # Disable automatic box update checking. If you disable this, then
     # boxes will only be checked for updates when the user runs
     # `vagrant box outdated`. This is not recommended.
@@ -31,10 +33,6 @@ Vagrant.configure("2") do |config|
     machine1.vm.provider "libvirt" do |libvirt|
       libvirt.cpus = 1
       libvirt.memory = "2048"
-    end
-    config.vm.provision "ansible" do |ansible|
-      ansible.verbose = "v"
-      ansible.playbook = "playbook/install.yml"
     end
   end
 end
