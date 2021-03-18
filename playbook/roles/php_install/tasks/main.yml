@@ -7,4 +7,4 @@
   with_items:
     - php
     - php-mysqlnd
-    - php-pecl-json
+    - php-pecl-jsonc
