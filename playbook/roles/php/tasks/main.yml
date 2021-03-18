@@ -1,0 +1,10 @@
+---
+- name: Install php
+  apt:
+    name: '{{ item }}'
+    state: latest
+    update_cache: yes
+  with_items:
+    - php
+    - libapache2-mod-php
+    - php-xml

@@ -1,0 +1,26 @@
+---
+- name: Install apache
+  apt:
+    name: apache2
+    state: latest
+    update_cache: yes
+
+- name: a2dismod mpm_event
+  shell: a2dismod mpm_event
+
+- name: a2enmod mpm_prefork
+  shell: a2enmod mpm_prefork
+
+- name: Set Configuration File
+  copy:
+    src: apache2.conf
+    dest: "{{apache_place}}/apache2.conf"
+    group: root
+    owner: root
+
+- name: Apache Service Start
+  systemd: 
+    name: apache2.service
+    state: restarted
+    daemon_reload: yes
+    enabled: yes
