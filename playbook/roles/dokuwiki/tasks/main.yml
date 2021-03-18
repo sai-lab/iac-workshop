@@ -1,25 +1,20 @@
 ---
-- name: download dokuwiki the latest stable release
-  shell: wget {{dokuwiki_url}}
-  args:
-    chdir: /var/www
+- name: Unarchive tar.gz
+  ansible.builtin.unarchive:
+    src: "{{ dokuwiki_url }}"
+    dest: /tmp
+    remote_src: yes
 
-- name: uncompress dokuwiki
-  shell: tar xvf dokuwiki-stable.tgz
-  args:
-    chdir: /var/www
+- name: Copy dokuwiki into /var/www
+  copy:
+    src: "/tmp/dokuwiki-{{ dokuwiki_version }}/"
+    dest: /var/www/dokuwiki
+    remote_src: yes
+    directory_mode: 0644
+    group: www-data
+    owner: www-data
 
-- name: rename dir
-  shell: mv dokuwiki-*/ dokuwiki
-  args:
-    chdir: /var/www
-
-- name: Change directory permission
-  shell: chown -R www-data:www-data /var/www/dokuwiki/
-  args:
-    chdir: /var/www
-
-- name: Replace document root 
+- name: Replace document root
   copy:
     src: 000-default.conf
     dest: "{{default_place}}/000-default.conf"
@@ -28,7 +23,7 @@
     mode: 0644
 
 - name: restart apache
-  systemd: 
+  systemd:
     name: apache2.service
     state: restarted
     daemon_reload: yes
