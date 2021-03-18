@@ -19,7 +19,7 @@
     owner: root
 
 - name: Apache Service Start
-  systemd: 
+  systemd:
     name: apache2.service
     state: restarted
     daemon_reload: yes

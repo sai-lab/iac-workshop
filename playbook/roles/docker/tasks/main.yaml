@@ -1,0 +1,55 @@
+---
+- name: Install tools
+  apt:
+    name: "{{ packages }}"
+    state: latest
+    update_cache: yes
+  vars:
+    packages:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg
+      - lsb-release
+
+- name: add gpg keys
+  ansible.builtin.apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Get os release version
+  ansible.builtin.shell: lsb_release -cs
+  register: os_release_version
+
+- name: Set variable lsb_release stdout
+  set_fact:
+    os_release_version={{ os_release_version.stdout }}
+
+- name: Add docker apt repository into sources list
+  ansible.builtin.apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ os_release_version }} stable"
+    state: present
+
+- name: Install docker
+  apt:
+    name: "{{ packages }}"
+    state: latest
+    update_cache: yes
+  vars:
+    packages:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+
+- name: Start docker daemon
+  systemd:
+    name: docker.service
+    state: restarted
+    daemon_reload: yes
+    enabled: yes
+
+- name: add user to docker group
+  ansible.builtin.user:
+    name: "{{ default_user }}"
+    groups: docker
+    append: yes
