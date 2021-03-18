@@ -1,5 +1,5 @@
 ---
-- hosts: iiguni-iac
+- hosts: YOUR_HOSTS
   become: yes
   gather_facts: no
   vars_files:
