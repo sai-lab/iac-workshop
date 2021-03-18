@@ -6,5 +6,5 @@
     update_cache: yes
   with_items:
     - php
-    - php-mysqlnd
-    - php-pecl-jsonc
+    - libapache2-mod-php
+    - php-xml
