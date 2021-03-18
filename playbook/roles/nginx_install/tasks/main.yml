@@ -6,12 +6,9 @@
     update_cache: yes
 
 - name: Set nginx.conf
-  file:
+  copy:
     src: nginx.conf
     dest: "{{nginx_place}}/nginx.conf"
-    owner: root
-    group: root
-    mode: 0644
 
 - name: Start Nginx
   systemd:
