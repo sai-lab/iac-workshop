@@ -1,18 +1,14 @@
-# Infrastructure as Code(Vagrant, Ansible)
+# Infrastructure as Code Workshop configures
 
-IaCの勉強会のためのVagrantとAnsibleの資料共有用のリポジトリです．
+研究室のIaC勉強会のためのVagrantとAnsibleの資料や設定集．
 
 ## Vagrant
 
-## Vagrantについて
-
-仮想化基盤(VirtualBox, VMware, kvm等)を設定ファイルを参照して自動で操作するソフトウェアである．
+仮想化基盤(VirtualBox, VMware, KVM等)を設定ファイルを参照して自動で操作するソフトウェアである．
 実行すると設定ファイルに書き込まれた環境のVMを簡単にコマンド一つで作成してくれる．
 2012年にメジャーバージョンがリリースされ，Rubyで作成されているオープンソースのソフトウェアである．
 
 ## Ansible
-
-### Ansibleについて
 
 Ansibleは，Ansible, Inc.により開発され，2012年にリリースされた構成管理ツールである．(2015年にRed Hatに買収される)  
 構成管理対象マシンに対して専用のエージェントのインストールが必要なく，記法はyamlである．  
