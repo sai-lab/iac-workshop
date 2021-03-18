@@ -27,5 +27,6 @@ Ansibleは，Ansible, Inc.により開発され，2012年にリリースされ�
 ## 参考文献
 
 [*Vagrant*](https://www.vagrantup.com/)  
+[*Vagrant Docs*](https://www.vagrantup.com/docs)  
 [*Ansible*](https://www.ansible.com/)  
 [*Ansible Docs*](https://docs.ansible.com/)  
