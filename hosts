@@ -1,3 +1,6 @@
+# This file only example file.
+# Default inventry file is .vagrant/provisioners/ansible/inventroy/vagrant_ansible_inventory when use vagrant
+
 [install]
 <YOUR_HOST>
 
