@@ -35,4 +35,14 @@ Vagrant.configure("2") do |config|
       libvirt.memory = "2048"
     end
   end
+
+  config.vm.provision :root_user, type: "shell", inline: "apt-get install python3"
+
+  # Provisioning by Ansible playbooks
+  config.vm.provision "ansible" do |ansible|
+      ansible.compatibility_mode = "2.0"
+      # ansible.verbose = "vvv"
+      ansible.playbook = "playbook/install.yml"
+      ansible.become = true
+  end
 end

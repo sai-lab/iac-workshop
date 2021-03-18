@@ -1,0 +1,11 @@
+---
+- hosts: YOUR_HOSTS
+  become: yes
+  gather_facts: no
+  vars_files:
+    - "vars/install.yml"
+  roles:
+    - timezone
+    - php
+    - apache
+    - dokuwiki
