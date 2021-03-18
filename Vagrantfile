@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
     # the path on the host to the actual folder. The second argument is
     # the path on the guest to mount the folder. And the optional third
     # argument is a set of non-required options.
-    machine1.vm.synced_folder "../data", "/vagrant_data", create: true, group: "#{user}-iac", owner: "#{user}-iac"
+    machine1.vm.synced_folder "../data", "/vagrant_data", create: true, group: "vagrant", owner: "vagrant"
     # Provider-specific configuration so you can fine-tune various
     # backing providers for Vagrant. These expose provider-specific options.
     # Example for VirtualBox:
