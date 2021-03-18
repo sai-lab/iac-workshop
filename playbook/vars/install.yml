@@ -1,4 +1,5 @@
 ---
 apache_place: "/etc/apache2"
-dokuwiki_url: "https://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz"
+dokuwiki_url: "https://download.dokuwiki.org/src/dokuwiki/dokuwiki-2020-07-29.tgz"
+dokuwiki_version: "2020-07-29"
 default_place: "/etc/apache2/sites-available"
