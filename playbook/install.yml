@@ -6,7 +6,6 @@
     - "vars/install.yml"
   roles:
     - timezone
-    - nginx_install
-    - mariadb_install
-    - php_install
-    - wordpress_install
+    - php
+    - apache
+    - dokuwiki
